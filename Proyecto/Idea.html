@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artistic Milliners</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'solar-blue': '#0057A0',
+                        'solar-orange': '#F47721',
+                        'solar-blue-light': '#3A7CB5',
+                    }
+                }
+            }
+        }
+    </script>
+    <script>
+      function toggleMenu() {
+        const menu = document.getElementById('menu');
+        menu.classList.toggle('hidden');
+      }
+  </script>
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #0057A0 0%, #E6F0F9 100%);
+            position: relative;
+        }
+        .gradient-bg::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('casa.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.15;
+            z-index: 0;
+        }
+        .gradient-bg > * {
+            position: relative;
+            z-index: 1;
+        }
+        .solar-card {
+            transition: all 0.3s ease;
+        }
+        .solar-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .dashboard-card {
+            transition: all 0.3s ease;
+        }
+        .dashboard-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .chart-container {
+            height: 250px;
+            position: relative;
+        }
+        .chart-bar {
+            position: absolute;
+            bottom: 0;
+            width: 30px;
+            background: linear-gradient(to top, #0057A0, #3A7CB5);
+            border-radius: 5px 5px 0 0;
+            transition: height 1s ease;
+        }
+        .product-slider {
+            scroll-behavior: smooth;
+        }
+        .product-slider::-webkit-scrollbar {
+            display: none;
+        }
+        .slider-control {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .slider-prev {
+            left: 10px;
+        }
+        .slider-next {
+            right: 10px;
+        }
+        .stats-item {
+            position: relative;
+            z-index: 1;
+        }
+        .stats-item::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #0057A0;
+            opacity: 0.05;
+            border-radius: 0.5rem;
+            z-index: -1;
+        }
+        .benefit-card {
+            transition: all 0.3s ease;
+        }
+        .benefit-card:hover {
+            transform: translateY(-5px);
+        }
+        .faq-item {
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+        .faq-question {
+            cursor: pointer;
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div id="app">
+        <!-- Página Inicial (Pública) -->
+        <div id="public-page" class="block">
+                <nav class="bg-white shadow-md">
+                  <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+                    <!-- Logo + título -->
+                    <div class="flex items-center">
+                      <a href="Idea.html">
+                        <img src="casa.png" class="h-10 w-10 text-solar-blue" alt="Inicio">
+                      </a>
+                      <span class="ml-2 text-xl font-bold text-gray-800">Artistic Milliners</span>
+                    </div>
+                      <!-- Botón hamburguesa -->
+                      <button class="md:hidden text-gray-700 focus:outline-none" onclick="toggleMenu()">
+                        ☰
+                      </button>
+                    
+
+                        <!-- Menú desplegable -->
+                      <div id="menu" class="hidden md:flex md:flex-row flex-col md:items-center md:space-x-6 space-y-2 px-4 pb-4">
+                          <a href="Idea.html" class="text-gray-700 hover:text-solar-blue transition">Início</a>
+                          <a href="#como-funciona" class="text-gray-700 hover:text-solar-blue transition">Conócenos</a>
+                          <a href="#produtos" class="text-gray-700 hover:text-solar-blue transition">Apartados</a>
+                          <a href="#depoimentos" class="text-gray-700 hover:text-solar-blue transition">Apartados</a>
+                          <a href="#faq" class="text-gray-700 hover:text-solar-blue transition">Apartados</a>
+                          <a href="#contato" class="text-gray-700 hover:text-solar-blue transition">Apartados</a>
+                      </div>
+                  </div>
+                </nav>
+            <!-- Hero Section -->
+            <section id="inicio" class="gradient-bg py-20">
+                <div class="container mx-auto px-4">
+                    <div class="flex flex-col md:flex-row items-center">
+                        <div class="md:w-1/2 text-white mb-10 md:mb-0">
+                            <h1 class="text-4xl md:text-5xl font-bold mb-2">Bienvenidos a Artistic Milliners </h1>
+                            <h3> Parras Coahuila Mexico</h3>
+                            <p class="text-xl mb-8">Tu aliado en la fabricación de pantalones para marcas que marcan tendencia</p>
+                            <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                                <a href="#como-funciona" class="bg-solar-orange hover:bg-solar-blue-light text-white px-6 py-3 rounded-md font-semibold transition text-center">Misión</a>
+                                <a href="#Mision" class="border border-white text-white hover:bg-white hover:text-solar-blue px-6 py-3 rounded-md font-semibold text-center transition">Visión</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Estatísticas -->
+            <section id="estatisticas" class="py-16 bg-white">
+                <div class="container mx-auto px-4">
+                    <h2 class="text-3xl font-bold text-center mb-12">Departamentos</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                        <div class="stats-item bg-white rounded-lg p-6 shadow-lg text-center">
+                            <div class="text-5xl font-bold text-solar-blue mb-2">Corte</div>
+                            <p class="text-gray-700 font-medium">Precisión que da forma a la calidad</p>
+                        </div>
+                        <div class="stats-item bg-white rounded-lg p-6 shadow-lg text-center">
+                            <div class="text-5xl font-bold text-solar-blue mb-2">Calidad</div>
+                            <p class="text-gray-700 font-medium">Control riguroso, confianza garantizada</p>
+                        </div>
+                        <div class="stats-item bg-white rounded-lg p-6 shadow-lg text-center">
+                            <div class="text-5xl font-bold text-solar-blue mb-2">Producción</div>
+                            <p class="text-gray-700 font-medium">Eficiencia que transforma diseño en realidad</p>
+                        </div>
+                        <div class="stats-item bg-white rounded-lg p-6 shadow-lg text-center">
+                            <div class="text-5xl font-bold text-solar-blue mb-2">Empaque</div>
+                            <p class="text-gray-700 font-medium">Presentación cuidada, entrega puntual</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+ <section>
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center mb-12">Nuestros Inicios</h2>
+    <div class="flex flex-col md:flex-row items-start gap-8">
+      <div class="md:w-2/3">
+        <p>
+          En el año 2024, en medio de conversaciones visionarias entre emprendedores afganos radicados en México, comenzó a gestarse una idea audaz: crear una empresa que fusionara la riqueza cultural de Afganistán con la innovación y el dinamismo del mercado mexicano. Así nació el concepto de Artistic Milliners, una compañía que no solo ofrecería productos y servicios únicos, sino que también representaría un puente entre dos mundos.
+          Durante ese año, se realizaron estudios de mercado, se definieron los valores fundacionales y se trazó una estrategia que honrara las raíces afganas mientras se adaptaba al contexto mexicano. Las reuniones eran intensas, llenas de pasión y propósito. Se trataba de algo más que negocios: era una misión.
+          Finalmente, el sueño tomó forma oficial el 31 de marzo de 2025, fecha en la que Artistic Milliners México fue registrada como empresa en México. Desde ese momento, se convirtió en la primera compañía en todo el país con orígenes afganos, marcando un hito en la historia empresarial mexicana.
+          Con sede en México y alma afgana, Artistic Milliners se posicionó rápidamente como pionera en su sector, destacándose por su enfoque intercultural, su compromiso con la calidad y su visión de futuro. Hoy, Artistic Milliners no solo representa una empresa, sino una historia de migración, resiliencia y emprendimiento que inspira a nuevas generaciones.
+        </p>
+      </div>
+      <div class="md:w-1/3">
+        <img src="His.avif" alt="Historia de Artistic Milliners" class="w-full h-auto rounded-lg shadow-md">
+      </div>
+    </div>
+  </div>
+</section>
+            <!-- Como Funciona -->
+            <section id="como-funciona" class="py-20 bg-gray-50">
+                <div class="container mx-auto px-4">
+                    <h2 class="text-3xl font-bold text-center mb-12">Nuestra Empresa</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                        <!-- Coluna 1: Afiliado -->
+                        <div class="bg-white rounded-lg p-8 shadow-lg">
+                            <div class="flex justify-center mb-6">
+                                <div class="bg-solar-orange w-20 h-20 rounded-full flex items-center justify-center text-white text-3xl">
+                                    <i class="fas fa-dollar-sign"></i>
+                                </div>
+                            </div>
+                            <h3 class="text-2xl font-semibold text-center mb-6">Mision</h3>
+                            <ul class="space-y-4">
+                                <li class="flex items-start">
+                                    <div class="bg-solar-blue rounded-full w-6 h-6 flex items-center justify-center text-white font-bold text-sm mt-0.5 flex-shrink-0">-</div>
+                                    <p class="ml-3">Fabricar pantalones de alta calidad para marcas nacionales e internacionales, combinando precisión técnica, eficiencia operativa y compromiso con la excelencia.</p>
+                                </li>
+                            </ul>
+                            <div class="mt-8 bg-blue-50 border-l-4 border-solar-blue p-4 rounded-r-md">
+                                <p class="text-gray-700">
+                                    <strong>Nos enfocamos en ser un socio confiable que transforma diseños en productos terminados, cumpliendo con los estándares más exigentes de la industria textil.</strong> 
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <!-- Coluna 2: Equipe de Afiliados -->
+                        <div id="Mision" class="bg-white rounded-lg p-8 shadow-lg">
+                            <div class="flex justify-center mb-6">
+                                <div class="bg-solar-blue w-20 h-20 rounded-full flex items-center justify-center text-white text-3xl">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                            </div>
+                            <h3 class="text-2xl font-semibold text-center mb-6">Vision</h3>
+                            <ul class="space-y-4">
+                                <li class="flex items-start">
+                                    <div class="bg-solar-orange rounded-full w-6 h-6 flex items-center justify-center text-white font-bold text-sm mt-0.5 flex-shrink-0">-</div>
+                                    <p class="ml-3">Ser reconocidos como la empresa líder en manufactura de pantalones en Latinoamérica, destacando por nuestra innovación, cumplimiento y capacidad de adaptación a las necesidades de cada marca.</p>
+                                </li>
+                            </ul>
+                            <div class="mt-8 bg-orange-50 border-l-4 border-solar-orange p-4 rounded-r-md">
+                                <p class="text-gray-700">
+                                    <strong>Aspiramos a construir relaciones duraderas con nuestros clientes, impulsando su crecimiento a través de productos que reflejan calidad, estilo y responsabilidad.</strong>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               </section>
+
+                               <!-- Footer -->
+            <footer class="bg-gray-800 text-white py-12">
+                <div class="container mx-auto px-4">
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                        <div>
+                            <div class="flex items-center mb-4">
+                                <svg class="h-8 w-8 text-solar-orange" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2L4 8v12h16V8l-8-6zm0 2.25l6 4.5v9.75H6V8.75l6-4.5z"></path>
+                                    <path d="M12 7l-4 3v8h8v-8l-4-3zm0 2l2 1.5V16h-4v-5.5L12 9z"></path>
+                                </svg>
+                                <span class="ml-2 text-xl font-bold">Artistic Milliners Mexico</span>
+                            </div>
+                            <p class="text-gray-400">Tu aliado en la fabricación de pantalones para marcas que marcan tendencia</p>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-semibold mb-4">Links Rápidos</h4>
+                            <ul class="space-y-2">
+                                <li><a href="#inicio" class="text-gray-400 hover:text-solar-orange transition">Início</a></li>
+                                <li><a href="#como-funciona" class="text-gray-400 hover:text-solar-orange transition">Como Funciona</a></li>
+                                <li><a href="#beneficios" class="text-gray-400 hover:text-solar-orange transition">Apartado</a></li>
+                                <li><a href="#produtos" class="text-gray-400 hover:text-solar-orange transition">Apartado</a></li>
+                                <li><a href="#depoimentos" class="text-gray-400 hover:text-solar-orange transition">Apartado</a></li>
+                                <li><a href="#faq" class="text-gray-400 hover:text-solar-orange transition">Apartado</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                          <h4 class="text-lg font-semibold mb-4">Redes</h4>
+                          <ul class="space-y-2">
+                            <li class="flex items-center space-x-2">
+                              <img src="facebook.png" alt="Facebook" class="w-5 h-5">
+                              <a href="#" class="text-gray-400 hover:text-solar-orange transition">Facebook</a>
+                            </li>
+                            <li class="flex items-center space-x-2">
+                              <img src="panorama.png" alt="Email" class="w-5 h-5">
+                              <a href="#" class="text-gray-400 hover:text-solar-orange transition">Artisticmilliners@gmail.com.mx</a>
+                            </li>
+                            <li class="flex items-center space-x-2">
+                              <img src="instagram.png" alt="Instagram" class="w-5 h-5">
+                              <a href="#" class="text-gray-400 hover:text-solar-orange transition">Instagram</a>
+                            </li>
+                            <li class="flex items-center space-x-2">
+                              <img src="x.png" alt="Twitter" class="w-5 h-5">
+                              <a href="#" class="text-gray-400 hover:text-solar-orange transition">X</a>
+                            </li>
+                          </ul>
+                        </div>
+                    </div>
+                    <div class="border-t border-gray-700 mt-12 pt-8 text-center">
+                        <p class="text-gray-400">&copy; 2025 Artistic Milliners. Todos los derechos reservados.</p>
+                    </div>
+                </div>
+            </footer> 
+
+    <script>
+        // Função para controlar o slider de produtos
+        function scrollProducts(direction) {
+            const slider = document.getElementById('product-slider');
+            const scrollAmount = 330; // Largura aproximada de um card + gap
+            
+            if (direction === 'left') {
+                slider.scrollLeft -= scrollAmount;
+            } else {
+                slider.scrollLeft += scrollAmount;
+            }
+        }
+
+        // Função para controlar o FAQ
+        function toggleFaq(element) {
+            const faqItem = element.parentElement;
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            // Fechar todos os outros itens
+            faqItems.forEach(item => {
+                if (item !== faqItem && item.classList.contains('active')) {
+                    item.classList.remove('active');
+                    item.querySelector('.fas').classList.remove('transform', 'rotate-180');
+                }
+            });
+            
+            // Alternar o estado do item clicado
+            faqItem.classList.toggle('active');
+            element.querySelector('.fas').classList.toggle('rotate-180');
+        }
+
+        // Animar as barras do gráfico quando a página carregar
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.chart-bar').forEach(bar => {
+                const height = bar.style.height;
+                bar.style.height = '0';
+                setTimeout(() => {
+                    bar.style.height = height;
+                }, 100);
+            });
+            
+            // Abrir o primeiro item do FAQ por padrão
+            const firstFaqItem = document.querySelector('.faq-item');
+            if (firstFaqItem) {
+                firstFaqItem.classList.add('active');
+            }
+        });
+    </script>
+</body>
+</html>
+
